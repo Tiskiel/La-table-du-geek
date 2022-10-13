@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { categoriesReducer } from "./Reducer/reducer-navbar";
+import { getCategories } from "./Action/action-categories";
+import { categoriesReducer } from "./Reducer/reducer-categories";
 
 
 export const store = configureStore({
@@ -8,3 +9,5 @@ export const store = configureStore({
     },
     devTools : process.env.NODE_ENV !== "production"
 })
+
+store.dispatch(getCategories())

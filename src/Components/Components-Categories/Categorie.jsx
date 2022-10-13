@@ -1,31 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import arrowRight from '../../Assets/right-arrow.png'
+
 
 export default function Categorie(props) {
-    const categorie = useSelector(state => state.allCategories)
-    const {showSousCategories, setShowSousCategories} = props
-    console.log(categorie)
-    const handleSousCategories = (e) => {
-        e.preventDefault()
-        setShowSousCategories(!showSousCategories)
-    }
+    const categorie = useSelector(state => state.allCategories.allCategories)
+    
+
+    const [categorieSelected, setCategorieSelected] = useState(0)
 
     
+
+    const handleSousCategories = (element) => {
+        if(element === categorieSelected )return  setCategorieSelected(-1)
+        setCategorieSelected(element)
+        
+    }
+    
+    
+    
     const categories = categorie.map((el) => (
-        <>
-            <p className=''
-            onClick={handleSousCategories}>
+        <div key={el.id}>
+            <p className='text-2xl'
+            onClick={() => handleSousCategories(el.id) }>
                 {el.name}
             </p>
+            <span><img src={arrowRight} alt='arrowRight' /></span>
+            <ul>
             {
-                showSousCategories && (
+                el.id === categorieSelected && el.sousCategories && (
                     el.sousCategories.map((element) => (
-                        <Link to={`/${element}`} key={element}>{element}</Link>
+                        <li><Link to={`/${element}`} key={element}>{element}</Link></li>
                     )))
                 
             }
-        </>
+            </ul>
+        </div>
         
     ))
     

@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit"
-import { getCategories } from "../Action/action-navbar"
+import { getCategories } from "../Action/action-categories"
 
 const initialState = {
     allCategories : []
@@ -9,7 +9,7 @@ export const categoriesReducer = createReducer(initialState, (builder) => {
     builder
         .addCase(getCategories.fulfilled, (state, action) => {
             
-                console.log(state);
+            
                 return {
 
                     allCategories : action.payload
@@ -19,15 +19,15 @@ export const categoriesReducer = createReducer(initialState, (builder) => {
         .addCase(getCategories.rejected, (state, action) => {
             return{
                 
-                name : 'Error',
                 
+                allCategories : []
 
             }
         })
         .addCase(getCategories.pending, (state, action) => {
             return{
                 
-                name : 'Categories on road',
+                allCategories : []
                 
 
             }

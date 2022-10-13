@@ -1,0 +1,1 @@
+export const rightArrowSvg = "https://www.flaticon.com/free-icons/next"
