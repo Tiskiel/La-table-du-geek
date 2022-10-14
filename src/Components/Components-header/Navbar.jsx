@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 import Burger from '../Components-navBar/Burger';
 import Categories from '../Components-navBar/Categories';
-import logoALTG from '../../Assets/images/logo-ALTG.png'
 import logo from '../../Assets/images/favicon.png'
 
 export default function Navbar() {
     const[open, setOpen] = useState(false);
 
     return (
-        <div className='grid gap-2 grid-cols-3'>
+        <div className='grid gap-4 grid-cols-4'>
             <div>
                 <div className="flex justify-between p-4">
                     <img className='h-12' src={logo} alt="" />

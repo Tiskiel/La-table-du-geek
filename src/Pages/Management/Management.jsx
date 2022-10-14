@@ -1,13 +1,31 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addPost } from '../../Store/Action/action-posts'
+import { id, newPost } from '../../Utilities/managementUtilities'
+
+
 
 export default function Management() {
-    const categories = useSelector(state => state.allCategories.allCategories)
+    const [name, setName] = useState('')
+    const [description, setDescription] = useState('')
+    const [url, setUrl] = useState('')
+    const [sousCat, setSousCat] = useState([])
+    const [cat, setCategories] = useState([])
+    const dispatch = useDispatch()
 
+    const categories = useSelector(state => state.allCategories.allCategories)
+    const handleCategories = (categories, sousCategories) => {
+
+        setSousCat(currentValues => [...currentValues, sousCategories])
+        setCategories(currentValue => [...currentValue, categories])
+    }
+    
     const selectCategories = categories.map((element) => 
-    <select key={element.name} defaultValue={element.name}>
+    <select key={element.name} multiple={true} value={sousCat} onChange={sousCat => handleCategories(element.id, sousCat.target.value)}>
         {element.sousCategories.map(el => <option key={el} value={el}>{el}</option>)}
     </select>)
+
+    
 
     return (
         <div>
@@ -22,11 +40,19 @@ export default function Management() {
             <div className='grid grid-cols-3 gap-4 mt-28'>
             <div className=''>
                 <main className='col-start-2 col-span-4 row-span-3'>
-                <input type='text' placeholder='name' className='border-2 rounded-xl bg-black text-white text-center w-64'/>
-                <input type='text' placeholder='url image' className='border-2 rounded-xl bg-black text-white text-center w-64'/>
-                <textarea placeholder='Description' className='border-2 rounded-xl bg-black text-white text-center w-64'/>
+                <input 
+                type='text' placeholder='name' value={name} onChange={el => setName(el.target.value)}
+                className='border-2 rounded-xl bg-black text-white text-center w-64'/>
+                <input 
+                type='text' placeholder='url image' value={url} onChange={url => setUrl(url.target.value)}
+                className='border-2 rounded-xl bg-black text-white text-center w-64'/>
+                <textarea 
+                placeholder='Description' value={description} onChange={description => setDescription(description.target.value)}
+                className='border-2 rounded-xl bg-black text-white text-center w-64'/>
                 {selectCategories}
-                <button className='border-2 bg-black text-cyan-300 rounded-lg p-2 box-decoration-slice w-64 '>Post</button>
+                <button 
+                className='border-2 bg-black text-cyan-300 rounded-lg p-2 box-decoration-slice w-64 '
+                onClick={() => dispatch(addPost(newPost(name, id(),description, url, cat, sousCat, 1, 1)))}>Add</button>
                 </main>
             </div>
             <div className=''>
