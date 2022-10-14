@@ -4,7 +4,7 @@ import Categories from '../Components-navBar/Categories';
 
 export default function Navbar() {
     const[open, setOpen] = useState(false);
-    
+
     return (
         <div className='grid gap-2 grid-cols-3'>
         <div>
@@ -13,7 +13,7 @@ export default function Navbar() {
         <Burger open={open} setOpen={setOpen} />
         </div>
             {open && 
-            <div className="absolute flex items-center justify-center flex-col bg-blue-600 gap-2 text-xl text-white rounded-br-2xl rounded-bl-2xl w-36 duration-700">
+            <div className="absolute text flex items-center justify-center flex-col bg-blue-600 gap-2 text-xl text-white rounded-br-2xl rounded-bl-2xl w-48 duration-700">
                 <Categories />
             </div>
         }

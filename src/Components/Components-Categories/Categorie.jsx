@@ -10,7 +10,12 @@ export default function Categorie(props) {
 
     const [categorieSelected, setCategorieSelected] = useState(0)
 
-    
+    const [open, setOpen] = useState(false)
+
+    const handleArrow = (e) => {
+        e.preventDefault();
+        setOpen(!open);
+    };
 
     const handleSousCategories = (element) => {
         if(element === categorieSelected )return  setCategorieSelected(-1)
@@ -22,16 +27,18 @@ export default function Categorie(props) {
     
     const categories = categorie.map((el) => (
         <div key={el.id}>
-            <p className='text-2xl'
-            onClick={() => handleSousCategories(el.id) }>
+        <div className='flex hover:cursor-pointer' onClick={handleArrow} >
+            <div><img src={arrowRight} alt='arrowRight' className={`flex  ${open && 'rotate-90'}`} /></div>
+            <div className='text-2xl'
+            onClick={() => {handleSousCategories(el.id)} }>
                 {el.name}
-            </p>
-            <span><img src={arrowRight} alt='arrowRight' /></span>
+            </div>
+        </div>
             <ul>
             {
                 el.id === categorieSelected && el.sousCategories && (
                     el.sousCategories.map((element) => (
-                        <li><Link to={`/${element}`} key={element}>{element}</Link></li>
+                        <li><Link to={`/categories/${el.name}/${element}`} key={element}>{element}</Link></li>
                     )))
                 
             }
