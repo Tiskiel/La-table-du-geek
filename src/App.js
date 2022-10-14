@@ -9,7 +9,7 @@ import Recepes from './Pages/Recepes/Recepes';
 function App() {
   return (
     <div className='grid grid-flow-row auto-rows-max'>
-      <div className='fixed bg-blue-600 shadow-md  z-50 w-full px-5 py-2 flex justify-between items-center'>
+      <div className='fixed bg-rose-800 shadow-md  z-50 w-full px-5 py-2 flex justify-between items-center'>
         <Header />
       </div>
       <div className='mt-20 h-2/3'>
@@ -21,7 +21,7 @@ function App() {
           <Route path='/' element={<Navigate to='/home' />} />
         </Routes>
       </div>
-      <div className='fixed bottom-0 bg-blue-600 shadow-md  z-50 w-full px-5 py-2 flex justify-between items-center'>
+      <div className='fixed bottom-0 bg-rose-800 shadow-md  z-50 w-full px-5 py-2 flex justify-between items-center'>
         <Footer />
       </div>
     </div>
