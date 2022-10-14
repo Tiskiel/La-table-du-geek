@@ -12,7 +12,7 @@ function App() {
       <div className='fixed bg-blue-600 shadow-md  z-50 w-full px-5 py-2 flex justify-between items-center'>
         <Header />
       </div>
-      <div className='mt-20 h-2/3'>
+      <div className='mt-20 h-2/3 '>
         <Routes>
           <Route path='/home' element='' />
           <Route path='/categories/:categorie/:nameSousCategorie' element={<SousCategories />} />
