@@ -8,12 +8,14 @@ export default function Navbar() {
     const[open, setOpen] = useState(false);
 
     return (
-        <div className='grid gap-4 grid-cols-4'>
-            <div>
-                <div className="flex justify-between p-4">
-                    <Link to='/home'>
-                        <img className='h-12' src={logo} alt="" />
-                    </Link>
+        <div className='flex w-screen'>
+            <div className='flex-1'>
+                <Link to='/home'>
+                    <img className='h-12' src={logo} alt="" />
+                </Link>
+            </div>
+            <div className='flex-1'>
+                <div className="flex-1 p-4">
                     <Burger open={open} setOpen={setOpen} />
                 </div>
                 {open && 
@@ -22,13 +24,15 @@ export default function Navbar() {
                 </div>
                 }
             </div>
-            <div className=''>
+            <div className='flex-1'>
                 <input type="text" />
             </div>
-            <div>
+            <div className='flex-1'>
                 <button className='flex'>Rechercher</button>
             </div>
-            <div className='flex'>Connection</div>
+            <div className='flex-1'>
+                Connection
+            </div>
         </div>
     )
 }

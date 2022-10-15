@@ -25,7 +25,7 @@ export default function Management() {
     }
     
     const selectCategories = categories.map((element) => 
-        <select key={element.name} multiple={true} value={sousCat} onChange={sousCat => handleCategories(element.id, sousCat.target.value)}>
+        <select key={element.name} multiple={true} value={sousCat} onChange={sousCat => handleCategories(element.id, sousCat.target.value)} className='bg-gray-400 text-white border-2'>
             {element.sousCategories.map(el => <option key={el} value={el}>{el}</option>)}
         </select>
     )

@@ -8,7 +8,7 @@ export default function SousCategories() {
     
     
     const post = posts.filter(element => element.sousCategories.includes(nameSousCategorie)).map(el => 
-        <Link to={`/${nameSousCategorie}/${el.name}`}>
+        <Link to={`/${nameSousCategorie}/${el.name}/${el.id}`}>
             <div className="max-w-sm rounded-3xl overflow-hidden shadow-lg bg-gray-100 h-3/6">
                 <img className="w-full h-56" src={el.imgDirect} alt="" />
                 <div className="px-6 py-4">
