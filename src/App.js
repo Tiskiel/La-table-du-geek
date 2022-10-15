@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route path='/home' element={<Home />} />
           <Route path='/categories/:categorie/:nameSousCategorie' element={<SousCategories />} />
-          <Route path='/:sousCategorie/recepes' element={<Recepes />} />
+          <Route path='/:sousCategorie/:recepes/:id' element={<Recepes />} />
           <Route path='/state/zoneZekoJF/House' element={<Management />} />
           <Route path='/' element={<Navigate to='/home' />} />
         </Routes>
