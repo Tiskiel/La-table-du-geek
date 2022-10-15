@@ -5,6 +5,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import SousCategories from './Pages/SousCategories/SousCategories';
 import Management from './Pages/Management/Management';
 import Recepes from './Pages/Recepes/Recepes';
+import Home from './Pages/Home/Home';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       </div>
       <div className='mt-28 h-2/3 ml-10 '>
         <Routes>
-          <Route path='/home' element='' />
+          <Route path='/home' element={<Home />} />
           <Route path='/categories/:categorie/:nameSousCategorie' element={<SousCategories />} />
           <Route path='/:sousCategorie/recepes' element={<Recepes />} />
           <Route path='/state/zoneZekoJF/House' element={<Management />} />

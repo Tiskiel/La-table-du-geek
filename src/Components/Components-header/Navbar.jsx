@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Burger from '../Components-navBar/Burger';
 import Categories from '../Components-navBar/Categories';
 import logo from '../../Assets/images/favicon.png'
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
     const[open, setOpen] = useState(false);
@@ -10,7 +11,9 @@ export default function Navbar() {
         <div className='grid gap-4 grid-cols-4'>
             <div>
                 <div className="flex justify-between p-4">
-                    <img className='h-12' src={logo} alt="" />
+                    <Link to='/home'>
+                        <img className='h-12' src={logo} alt="" />
+                    </Link>
                     <Burger open={open} setOpen={setOpen} />
                 </div>
                 {open && 
