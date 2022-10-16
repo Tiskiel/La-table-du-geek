@@ -9,11 +9,11 @@ import Home from './Pages/Home/Home';
 
 function App() {
   return (
-    <div className='grid grid-flow-row auto-rows-max bg-gray-400'>
+    <div className='flex flex-col bg-gray-400'>
       <div className='fixed bg-rose-800 shadow-md  z-50 w-full px-5 py-2 flex justify-between items-center'>
         <Header />
       </div>
-      <div className='mt-28 h-2/3 ml-10 '>
+      <div className='mt-28 h-2/3 ml-10 w-screen'>
         <Routes>
           <Route path='/home' element={<Home />} />
           <Route path='/categories/:categorie/:nameSousCategorie' element={<SousCategories />} />
