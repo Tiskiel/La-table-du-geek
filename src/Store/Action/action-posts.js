@@ -20,15 +20,17 @@ export const addPost = createAsyncThunk(
 export const deletePost = createAsyncThunk(
     'deletePost/fetchJsonServer',
     async (postId, thunk) => {
+        console.log(postId);
         const kill = await axios.delete('http://localhost:3000/posts/' + postId)
+        console.log(kill)
         thunk.dispatch(getPosts())
     }
 )
 
 export const updatePost = createAsyncThunk(
     'updatePost/fetchJsonServer',
-    async (stateName, thunk) => {
-        const update = await axios.put('http://localhost:3000/posts', stateName)
+    async (stateId, thunk) => {
+        const update = await axios.put('http://localhost:3000/posts', stateId)
         thunk.dispatch(getPosts())
     }
 )

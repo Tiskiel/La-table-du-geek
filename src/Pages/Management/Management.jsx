@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addPost, deletePost } from '../../Store/Action/action-posts'
 import { id, newPost } from '../../Utilities/managementUtilities'
@@ -6,22 +6,30 @@ import { id, newPost } from '../../Utilities/managementUtilities'
 
 
 export default function Management() {
+    const categories = useSelector(state => state.allCategories.allCategories)
+    const posts = useSelector(state => state.allPosts.posts )
+
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [url, setUrl] = useState('')
     const [sousCat, setSousCat] = useState([])
-    const [cat, setCategories] = useState([])
-    const [killPostId, setkillPostId] = useState('')
-    const [updatePostId, setUpdatePostId] = useState('')
+    const [killPostId, setkillPostId] = useState("")
+    const [handleClickShow, setHandleClickShow] = useState(false)
+    const [updatePostId, setUpdatePostId] = useState("")
+
+    useEffect(() => {
+        if (posts.length > 0) {
+            setkillPostId(posts[0].id)
+            setUpdatePostId(posts[0].id)
+        }
+    }, [posts])
     
     const dispatch = useDispatch()
-
-    const categories = useSelector(state => state.allCategories.allCategories)
-    const posts = useSelector(state => state.allPosts.posts )
+    
 
     const handleCategories = (categories, sousCategories) => {
         setSousCat(currentValues => [...currentValues, sousCategories])
-        setCategories(currentValue => [...currentValue, categories])
+        
     }
     
     const selectCategories = categories.map((element) => 
@@ -30,26 +38,13 @@ export default function Management() {
         </select>
     )
 
-    const showPosts = posts.map((post) => 
-        <div className=''>
-            <main className='col-start-2 col-span-4 row-span-3'>
-            <input 
-            type='text' placeholder={post.name} value={name} onChange={el => setName(el.target.value)}
-            className='border-2 rounded-xl bg-black text-white text-center w-64'/>
-            <input 
-            type='text' placeholder='url image' value={url} onChange={url => setUrl(url.target.value)}
-            className='border-2 rounded-xl bg-black text-white text-center w-64'/>
-            <textarea 
-            placeholder='Description' value={description} onChange={description => setDescription(description.target.value)}
-            className='border-2 rounded-xl bg-black text-white text-center w-64'/>
-            {selectCategories}
-            <button 
-            className='border-2 bg-black text-cyan-300 rounded-lg p-2 box-decoration-slice w-64 '
-            onClick={() => dispatch(addPost(newPost(name, id(),description, url, cat, sousCat, 1, 1)))}>Add</button>
-            </main>
-        </div>
+    const post = posts.map(post => 
+        <option key={post.id} value={post.id}>{post.name} | {post.id}</option>
     )
-
+    console.log(posts)
+    const showPosts = posts.find(element => element.id === updatePostId)
+    
+        console.log(showPosts);
     return (
         <div className='h-screen pt-20'>
             <div className='text-center'>
@@ -75,20 +70,43 @@ export default function Management() {
                 {selectCategories}
                 <button 
                 className='border-2 bg-black text-cyan-300 rounded-lg p-2 box-decoration-slice w-64 '
-                onClick={() => dispatch(addPost(newPost(name, id(),description, url, cat, sousCat, 1, 1)))}>Add</button>
+                onClick={() => dispatch(addPost(newPost(name, id(),description, url, sousCat, 1)))}>Add</button>
                 </main>
             </div>
             <div className=''>
                 <main className='col-start-2 col-span-4 row-span-3'>
-                <input type='text' placeholder='ID post' 
-                className='border-2 rounded-xl bg-black text-white text-center w-64'/>
-                <button className='border-2 bg-black text-cyan-300 rounded-lg p-2 box-decoration-slice w-64 '>Update</button>
+                <select value={updatePostId} onChange={postToUpdate => setUpdatePostId(postToUpdate.target.value)}>
+                    {post}
+                </select>
+                <button onClick={() => setHandleClickShow(!handleClickShow)}
+                className='border-2 bg-black text-cyan-300 rounded-lg p-2 box-decoration-slice w-64 '>Show</button>
+                {(showPosts && handleClickShow) && (
+                    <div className=''>
+                        <main className='col-start-2 col-span-4 row-span-3'>
+                        <input 
+                        type='text' placeholder={showPosts.name} value={name} onChange={el => setName(el.target.value)}
+                        className='border-2 rounded-xl bg-black text-white text-center w-64'/>
+                        <input 
+                        type='text' placeholder={showPosts.imgDirect} value={url} onChange={url => setUrl(url.target.value)}
+                        className='border-2 rounded-xl bg-black text-white text-center w-64'/>
+                        <textarea 
+                        placeholder={showPosts.Description} value={description} onChange={description => setDescription(description.target.value)}
+                        className='border-2 rounded-xl bg-black text-white text-center w-64'/>
+                        {selectCategories}
+                        <button 
+                        className='border-2 bg-black text-cyan-300 rounded-lg p-2 box-decoration-slice w-64 '
+                        onClick={() => dispatch(addPost(newPost(name, id(),description, url, sousCat, 1)))}>Add</button>
+                        </main>
+                    </div>
+                )
+                }
                 </main>
             </div>
             <div className=''>
                 <main className='col-start-2 col-span-4 row-span-3'>
-                <input type='text' placeholder='ID post' value={killPostId} onChange={name => setkillPostId(name.target.value)}
-                className='border-2 rounded-xl bg-black text-white text-center w-64'/>
+                <select value={killPostId} onChange={postToKill => setkillPostId(postToKill.target.value)}>
+                    {post}
+                </select>
                 <button onClick={() => dispatch(deletePost(killPostId))}
                 className='border-2 bg-black text-cyan-300 rounded-lg p-2 box-decoration-slice w-64 '>Delete</button>
                 </main>
