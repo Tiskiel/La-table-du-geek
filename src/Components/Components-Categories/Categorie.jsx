@@ -6,31 +6,37 @@ import arrowRight from '../../Assets/right-arrow.png'
 
 export default function Categorie(props) {
     const categorie = useSelector(state => state.allCategories.allCategories)
-    
 
     const [categorieSelected, setCategorieSelected] = useState(0)
 
     const [open, setOpen] = useState(false)
 
-    const handleArrow = (e) => {
-        e.preventDefault();
-        setOpen(!open);
+    const [opens, setOpens] = useState(categorie.map(el => false))
+
+    const handleArrow = (e, indice) => {
+        e.preventDefault()
+        setOpens(previousValue => previousValue.map(
+            (el, i) => i === indice ? !el : false
+        ));
     };
 
     const handleSousCategories = (element) => {
         if(element === categorieSelected )return  setCategorieSelected(-1)
         setCategorieSelected(element)
-        
     }
     
     
     
-    const categories = categorie.map((el) => (
+    const categories = categorie.map((el, indice) => (
         <div key={el.id}>
-        <div className='flex hover:cursor-pointer' onClick={handleArrow} >
-            <div><img src={arrowRight} alt='arrowRight' className={`flex  ${open && 'rotate-90'}`} /></div>
-            <div className='text-2xl'
-            onClick={() => {handleSousCategories(el.id)} }>
+        <div className='flex hover:cursor-pointer' onClick={(e) => {
+            handleArrow(e, indice)
+            handleSousCategories(el.id)
+            }} >
+            <div className='pt-2 pr-1'>
+                <img src={arrowRight} alt='arrowRight' className={`flex  ${opens[indice] && 'rotate-90'}`} />
+            </div>
+            <div className='text-2xl'>
                 {el.name}
             </div>
         </div>
