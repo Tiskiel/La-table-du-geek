@@ -46,9 +46,9 @@ export default function Management() {
     
         console.log(showPosts);
     return (
-        <div className='h-screen'>
+        <div className='h-screen pt-20'>
             <div className='text-center'>
-                <h1 className='text-7xl'>Welcomes Boss</h1>
+                <h1 className='text-7xl '>Welcomes Boss</h1>
                 <p className='text-lg'>Good to see you budies</p>          
             </div>
             <br />
