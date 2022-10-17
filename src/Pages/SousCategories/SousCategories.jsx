@@ -9,7 +9,7 @@ export default function SousCategories() {
     
     const post = posts.filter(element => element.sousCategories.includes(nameSousCategorie)).map(el => 
         <Link to={`/${nameSousCategorie}/${el.name}/${el.id}`}>
-            <div className="mt-20 rounded-3xl overflow-hidden shadow-lg bg-gray-100 h-4/6 hover:shadow-amber-400">
+            <div className="mt-20 ml-3 rounded-3xl overflow-hidden shadow-lg bg-gray-100 h-4/6 hover:shadow-amber-400">
                 <img className="w-full h-56" src={el.imgDirect} alt="" />
                 <div className="px-6 py-4">
                     <div className="font-bold text-xl mb-2">{el.name}</div>
@@ -30,7 +30,7 @@ export default function SousCategories() {
         </Link>
         )
         return (
-            <div className='grid grid-cols-5 gap-4 h-screen'>
+            <div className='h-screen bg-gray-400 gap-2 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4  xl:grid-cols-5 2xl:grid-cols-6'>
                 {post}
             </div>
     )
