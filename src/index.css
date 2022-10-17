@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: Honey;
+    src: url(../src/Assets/font/Honey.ttf);
+}
