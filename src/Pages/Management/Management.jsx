@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addPost, deletePost } from '../../Store/Action/action-posts'
+import { addPost, deletePost, updatePost } from '../../Store/Action/action-posts'
 import { id, newPost } from '../../Utilities/managementUtilities'
 
 
@@ -95,7 +95,7 @@ export default function Management() {
                         {selectCategories}
                         <button 
                         className='border-2 bg-black text-cyan-300 rounded-lg p-2 box-decoration-slice w-64 '
-                        onClick={() => dispatch(addPost(newPost(name, id(),description, url, sousCat, 1)))}>Add</button>
+                        onClick={() => dispatch(updatePost(addPost(name, id(),description, url, sousCat, 1)))}>Add</button>
                         </main>
                     </div>
                 )
