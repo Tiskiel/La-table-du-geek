@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import logo from '../../Assets/images/logo-ALTG.png'
 
-export default function Home() {
+export default function Home() { 
+
     return (
         <div className='flex-col h-screen pt-20 bg-gray-400'>
             <div className='flex justify-center'>
@@ -13,3 +16,17 @@ export default function Home() {
         </div>
     )
 }
+
+// const PageSearch = () => {
+//     const [params, setParams] = useSearchParams()
+//     const posts = useSelector()
+
+//     useEffect(() => {
+//         const search = params.get("search")
+//         // Faire ma recherche via search
+//     }, [params])
+// }
+
+// const SearchBar = () => {
+
+// }
