@@ -10,6 +10,10 @@ export default function Navbar(props) {
     const [search, setSearch] = useState('')
     const navigate = useNavigate()
 
+    const handleConnection = () => {
+        navigate("/home/connection")
+    }
+
 
     const handleClick = () => {
 
@@ -49,7 +53,8 @@ export default function Navbar(props) {
             </div>
             <div className='flex-1'>
                 <div className='mt-3 text-right pr-4'>
-                    <button className='bg-transparent hover:bg-gray-400 text-gray-500 font-semibold hover:text-white px-2 py-1 border border-gray-500 hover:border-transparent rounded'>Connection</button>                
+                    <button onClick={handleConnection}
+                        className='bg-transparent hover:bg-gray-400 text-gray-500 font-semibold hover:text-white px-2 py-1 border border-gray-500 hover:border-transparent rounded'>Connection</button>                
                 </div>
             </div>
         </div>

@@ -28,6 +28,20 @@ export const addPost = (name, id, description, url, sousCategories, userId) => {
     return post
 }
 
+export const addUser = (id, username, password, lastname, name, mailadress) => {
+
+    const user = {
+        id : id,
+        name : name,
+        last_name : lastname,
+        username : username,
+        password : password,
+        mailadress : mailadress
+    }
+
+    
+}
+
 export const id = () => {
     const id = nanoid()
     return id
