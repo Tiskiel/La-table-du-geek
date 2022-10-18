@@ -14,7 +14,7 @@ import ProtectedRoutes from './Components/ProtectedRoutes/ProtectedRoutes';
 function App() {
   return (
     <div className='flex flex-col bg-gray-400 '>
-      <div className='fixed bg-rose-800 shadow-md z-50 w-full px-2 py-2 flex justify-between items-center'>
+      <div className='fixed bg-gradient-to-r from-rose-800 to-rose-500 shadow-md z-50 w-full px-2 py-2 flex justify-between items-center'>
         <Header />
       </div>
       <div>
@@ -31,7 +31,7 @@ function App() {
           </ProtectedRoutes>} />
         </Routes>
       </div>
-      <div className='fixed bottom-0 bg-rose-800 shadow-md  z-50 w-full px-5 py-2 flex justify-between items-center'>
+      <div className='fixed bottom-0 bg-gradient-to-r from-rose-800 to-rose-500 shadow-md  z-50 w-full px-5 py-2 flex justify-between items-center'>
         <Footer />
       </div>
     </div>
