@@ -11,7 +11,7 @@ export default function Home() {
                 <img src={logo} alt='' />
             </div>
             <div className='text-center font-Honey'>
-                <h1 className='text-6xl text-rose-800'>[Description]</h1>
+                <h1 className='text-6xl text-rose-800'>[ Un site web qui lie l'amour de la bouffe et la passion des manga au même endroit ! ]</h1>
             </div>           
         </div>
     )
