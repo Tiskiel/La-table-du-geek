@@ -5,7 +5,7 @@ import logo from '../../Assets/images/favicon.png'
 import { Link } from 'react-router-dom';
 
 export default function Navbar() {
-    const[open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false);
 
     return (
         <div className='flex w-screen'>
