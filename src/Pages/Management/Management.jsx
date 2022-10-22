@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Navigate } from 'react-router-dom'
 import { addPost, deletePost, updatePost } from '../../Store/Action/action-posts'
 import { id, newPost } from '../../Utilities/managementUtilities'
 
 
 
 export default function Management() {
+    const user = useSelector(state => state.auth.user)
     const categories = useSelector(state => state.allCategories.allCategories)
     const posts = useSelector(state => state.allPosts.posts )
 
@@ -17,6 +19,8 @@ export default function Management() {
     const [handleClickShow, setHandleClickShow] = useState(false)
     const [updatePostId, setUpdatePostId] = useState("")
 
+    
+
     useEffect(() => {
         if (posts.length > 0) {
             setkillPostId(posts[0].id)
@@ -24,8 +28,11 @@ export default function Management() {
         }
     }, [posts])
     
+    
     const dispatch = useDispatch()
     
+    if(!user) return <Navigate to='/home/connection' />
+    if(user.role !== "admin") return <Navigate to='/home/dashboard/user' />
 
     const handleCategories = (categories, sousCategories) => {
         setSousCat(currentValues => [...currentValues, sousCategories])
