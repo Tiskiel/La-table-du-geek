@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import React from 'react'
 import logo from '../../Assets/images/logo-ALTG2.png'
 
 export default function Home() { 
@@ -11,22 +9,8 @@ export default function Home() {
                 <img src={logo} alt='' />
             </div>
             <div className='text-center font-Honey'>
-                <h1 className='text-6xl text-rose-800'>[ Un site web qui lie l'amour de la bouffe et la passion des manga au même endroit ! ]</h1>
+                <h1 className='text-6xl text-rose-800'>[ Un site web qui lie l'amour de la bouffe et la passion des mangas au même endroit ! ]</h1>
             </div>           
         </div>
     )
 }
-
-// const PageSearch = () => {
-//     const [params, setParams] = useSearchParams()
-//     const posts = useSelector()
-
-//     useEffect(() => {
-//         const search = params.get("search")
-//         // Faire ma recherche via search
-//     }, [params])
-// }
-
-// const SearchBar = () => {
-
-// }

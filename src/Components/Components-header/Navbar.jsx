@@ -2,13 +2,17 @@ import React, { useState } from 'react'
 import Burger from '../Components-navBar/Burger';
 import Categories from '../Components-navBar/Categories';
 import logo from '../../Assets/images/favicon.png'
+import logoConnected from '../../Assets/images/logoConnectedBase.png'
 import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function Navbar(props) {
 
     const [open, setOpen] = useState(false)
     const [search, setSearch] = useState('')
     const navigate = useNavigate()
+
+    const user = useSelector(state => state.auth.user)
 
     const handleConnection = () => {
         navigate("/home/connection")
@@ -53,8 +57,11 @@ export default function Navbar(props) {
             </div>
             <div className='flex-1'>
                 <div className='mt-3 text-right pr-4'>
-                    <button onClick={handleConnection}
-                        className='bg-transparent hover:bg-gray-400 text-gray-500 font-semibold hover:text-white px-2 py-1 border border-gray-500 hover:border-transparent rounded'>Connection</button>                
+                        {user ? (<button onClick={handleConnection}
+                        >
+                        <img src={logoConnected} alt='' className='h-12 mb-1 mr-2 rounded-full shadow-md hover:shadow-yellow-300 ' /></button>) : (<button onClick={handleConnection}
+                        className='bg-transparent hover:bg-gray-400 text-gray-500 font-semibold hover:text-white px-2 py-1 border border-gray-500 hover:border-transparent rounded'>
+                        Connection</button>)}             
                 </div>
             </div>
         </div>
