@@ -8,6 +8,7 @@ export default function Dashboard() {
         <div className='w-screen flex flex-col pl-2'>
             <div><NavbarDashboard /></div>
             <div>Welcome to your dashboard {user.name}</div>
+            
         </div>
     )
 }

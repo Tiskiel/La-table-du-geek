@@ -4,15 +4,11 @@ import burgerOpen from '../../Assets/images/hamburgerOpen.png'
 
 export default function BurgerDashboard({over, setOver}) {
 
-    const handleOver = (e) => {
-        e.preventDefault()
-        setOver(!over)
-    }
 
     return (
         <div>
-            {over ? <img src={burgerOpen} alt='burgerOpen' className='h-32 pl-3' onMouseOver={handleOver}/> : 
-                <img src={burgerClose} alt='burgerClose' className='h-24' onMouseOver={handleOver}/>}
+            {over ? <img src={burgerOpen} alt='burgerOpen' className='h-32 pl-3'/> : 
+                <img src={burgerClose} alt='burgerClose' className='h-24' onMouseEnter={() => setOver(true)}/>}
             
         </div>
     )

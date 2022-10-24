@@ -28,7 +28,9 @@ function App() {
           <Route path='/search' element={<Search />} />
           <Route path='/home/dashboard/user' element={<ProtectedRoutes>
             <UserDashboard />
-          </ProtectedRoutes>} />
+          </ProtectedRoutes>}>
+            
+          </Route>
         </Routes>
       </div>
       <div className='fixed bottom-0 bg-gradient-to-r from-rose-800 to-rose-500 shadow-md  z-50 w-full px-5 py-2 flex justify-between items-center'>

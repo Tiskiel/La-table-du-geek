@@ -7,9 +7,10 @@ export default function NavbarDashboard() {
     const [over, setOver] = useState(false)
 
     return (
-        <div className='flex flex-row'>
+        <div  onMouseLeave={() => setOver(false)}
+            className='flex flex-row'>
             
-                <div><BurgerDashboard over={over} setOver={setOver} /></div>
+                <BurgerDashboard over={over} setOver={setOver}/>
                 <div className='ml-5 m-auto'>{over && <ComponentsNavDashboard />}</div>
             
         </div>
