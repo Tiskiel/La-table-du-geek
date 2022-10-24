@@ -10,6 +10,7 @@ export default function Management() {
     const user = useSelector(state => state.auth.user)
     const categories = useSelector(state => state.allCategories.allCategories)
     const posts = useSelector(state => state.allPosts.posts )
+    
 
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -55,12 +56,12 @@ export default function Management() {
     return (
         <div className='h-screen pt-20'>
             <div className='text-center'>
-                <h1 className='text-7xl '>Welcomes Boss</h1>
-                <p className='text-lg'>Good to see you budies</p>          
+                <h1 className='text-7xl '>Welcomes { user.username }</h1>
+                <p className='text-lg'>Good to see you budie</p>          
             </div>
             <br />
             <div>
-                <h3 className='text-2xl text-center'>What's your new recipes ?</h3>
+                <h3 className='text-2xl text-center'>What we doing today ?</h3>
             </div>
             <div className='grid grid-cols-3 gap-4 mt-28'>
             <div className=''>

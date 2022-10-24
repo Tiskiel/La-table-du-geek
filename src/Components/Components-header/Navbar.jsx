@@ -37,7 +37,7 @@ export default function Navbar(props) {
                         <Burger open={open} setOpen={setOpen} />
                     </div>
                     {open && 
-                    <div className=" absolute mt-14 items-center justify-center bg-rose-800 gap-2 text-xl text-white rounded-br-2xl rounded-bl-2xl w-48 duration-700">
+                    <div className=" absolute mt-16 pt-2 items-center justify-center  bg-rose-800 opacity-90 gap-2 text-xl text-white rounded-br-2xl rounded-bl-2xl w-48 duration-700">
                         <Categories />
                     </div>
                     }

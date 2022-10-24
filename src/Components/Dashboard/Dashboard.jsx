@@ -4,6 +4,10 @@ import NavbarDashboard from '../Component-dashboard/NavbarDashboard'
 
 export default function Dashboard() {
     const user = useSelector(state => state.auth.user)
+
+    // const showComponent = (state) => {
+
+    // }
     return (
         <div className='w-screen flex flex-col pl-2'>
             <div><NavbarDashboard /></div>

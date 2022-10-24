@@ -10,6 +10,10 @@ import Search from './Pages/Search/Search';
 import Connection from './Pages/Connection/Connection';
 import UserDashboard from './Pages/UserDashboard/UserDashboard';
 import ProtectedRoutes from './Components/ProtectedRoutes/ProtectedRoutes';
+import AccountUser from './Components/Component-dashboard/AccountUser';
+import UserPosts from './Components/Component-dashboard/UserPosts';
+import Favorites from './Components/Component-dashboard/Favorites';
+import Comment from './Components/Component-dashboard/Comment';
 
 function App() {
   return (
@@ -22,14 +26,17 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/categories/:categorie/:nameSousCategorie' element={<SousCategories />} />
           <Route path='/:sousCategorie/:recepes/:id' element={<Recepes />} />
-          <Route path='/state/zoneZekoJF/House' element={<Management />} />
           <Route path='/' element={<Navigate to='/home' />} />
           <Route path='/home/connection' element={<Connection />} />
           <Route path='/search' element={<Search />} />
           <Route path='/home/dashboard/user' element={<ProtectedRoutes>
             <UserDashboard />
           </ProtectedRoutes>}>
-            
+            <Route path='account' element={<AccountUser />} />
+            <Route path='userPosts' element={<UserPosts />} />
+            <Route path='favorites' element={<Favorites />} />
+            <Route path='comments' element={<Comment />} />
+            <Route path='admin' element={<Management />} />
           </Route>
         </Routes>
       </div>
